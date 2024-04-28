@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Apr 23 21:04:22 2024
-#29-DARS. OBYEKTLAR BILAN ISHLASH
+#29-DARS. CLASSLAR BILAN ISHLASH
 @author: moon
 """
 
 class Myauto:
-    """Mening mashinalrim haqida ma'lumot beradigan class"""
-    def __init___(self, km, model, rang, korobka, narh):
+    """Mening mashinalarim haqida ma'lumot beradigan class"""
+    def __init__(self, km, model, narh, rang = "qora", korobka = "avtomat"):
         self.km = km
         self.model = model
         self.rang = rang
@@ -16,7 +16,7 @@ class Myauto:
         self.narh = narh
 
     def get_km(self):
-        return self.km
+        return f"{self.model} avtomobili {self.km} yurgan"
 
     def get_model(self):
         return self.model
@@ -31,6 +31,67 @@ class Myauto:
         return self.km + new_km
     
     
-auto1 = Myauto()
+auto1 = Myauto(0, "BMW", 15000)
+auto2 = Myauto(0, "KI", 25000)
+auto3 = Myauto(0, "BYD", 52000)
+auto4 = Myauto(0, "Hyndai", 15000)
 
 print(auto1.get_info())
+
+class Avtosalon:
+    def __init__(self, name, address = "Olmazor tumani", how_many_auto = 50000, when_created = 2028):
+        self.name = name
+        self.address = address
+        self.how_many_auto = how_many_auto
+        self.when_created = when_created
+        self.auto_type = []
+        
+    def set_type_auto(self, new_model):
+        self.auto_type.append(new_model)
+        
+    def get_type_auto(self):
+        return [m.get_model() for m in self.auto_type]
+    
+    def get_info1(self):
+        return f"{self.name} salonimiz {self.when_created} da tashkil topgan va {self.address}da joylashgan bo'lib {self.get_type_auto} ta turdagi avtomobillar bor!!!"
+ 
+new_auto = Avtosalon("Drivers village")
+new_auto.set_type_auto(auto1)
+new_auto.set_type_auto(auto2)
+new_auto.set_type_auto(auto3)
+new_auto.set_type_auto(auto4)
+n = new_auto.get_info1()
+print(n)
+# auto2.set_type_auto("X7")
+# auto3.set_type_auto("K9")
+# auto4.set_type_auto("Han")
+# auto5.set_type_auto("Sonata")
+     
+
+        
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

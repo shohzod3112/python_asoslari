@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sat Apr 20 18:13:11 2024
-#29-DARS. OBYEKTLAR BILAN ISHLASH
+#29-DARS. CLASSLAR BILAN ISHLASH
 @author: moon
 """
 
@@ -45,7 +45,7 @@ class Talaba:
         return yil - self.tyil
 
     def tanishtir(self):
-        print(f"Ismim {self.ism} {self.familiya}. {self.tyil} yilda tu'gilganman")
+        print(f"Ismim {self.ism} {self.familiya}. {self.tyil} yilda tu'g'ilganman {self.get_age(2024)} yoshdaman va {Fan.get_name(matematika)} faniga qatnashaman")
     
     
 class Fan:
@@ -87,8 +87,8 @@ matematika.add_student(talaba3)
 
 # print(matematika.talabalar_soni)
 # print(matematika.talabalar)
-#mat_talabalar = matematika.get_students()
-#print(mat_talabalar)
+# mat_talabalar = matematika.get_students()
+# print(mat_talabalar)
 
 # print(see_methods(Talaba))
 #print(see_methods(talaba1))
