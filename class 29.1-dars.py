@@ -53,24 +53,21 @@ class Avtosalon:
         return [m.get_model() for m in self.auto_type]
     
     def get_info1(self):
-        return f"{self.name} salonimiz {self.when_created} da tashkil topgan va {self.address}da joylashgan bo'lib {self.get_type_auto} ta turdagi avtomobillar bor!!!"
+        return f"{self.name} salonimiz {self.when_created} da tashkil topgan va {self.address}da joylashgan bo'lib {[a.get_model() for a in self.auto_type]} turidagi avtomobillar bor!!!"
  
 new_auto = Avtosalon("Drivers village")
 new_auto.set_type_auto(auto1)
 new_auto.set_type_auto(auto2)
 new_auto.set_type_auto(auto3)
 new_auto.set_type_auto(auto4)
-n = new_auto.get_info1()
+n = new_auto.get_type_auto()
+
 print(n)
-# auto2.set_type_auto("X7")
-# auto3.set_type_auto("K9")
-# auto4.set_type_auto("Han")
-# auto5.set_type_auto("Sonata")
+print(new_auto.get_info1())
      
 
         
     
-
 
 
 
