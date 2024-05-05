@@ -16,7 +16,7 @@ class Myauto:
         self.narh = narh
 
     def get_km(self):
-        return f"{self.model} avtomobili {self.km} yurgan"
+        return f"{self.model} avtomobili {self.km} km yurgan"
 
     def get_model(self):
         return self.model
@@ -28,13 +28,14 @@ class Myauto:
         return f"Modeli: {self.model}, Rangi: {self.rang}, Korobka: {self.korobka}, Narxi: {self.narh}"
     
     def set_km(self, new_km):
-        return self.km + new_km
+        self.km = self.km + new_km
+        return self.km
     
     
-auto1 = Myauto(0, "BMW", 15000)
+auto1 = Myauto(0, "BMW", 150000)
 auto2 = Myauto(0, "KI", 25000)
 auto3 = Myauto(0, "BYD", 52000)
-auto4 = Myauto(0, "Hyndai", 15000)
+auto4 = Myauto(0, "Hyndai", 25000)
 
 print(auto1.get_info())
 
@@ -63,32 +64,13 @@ new_auto.set_type_auto(auto4)
 n = new_auto.get_type_auto()
 
 print(n)
-print(new_auto.get_info1())
-     
+print(new_auto.get_info1(), "\n")
+print(type(str), "\n")
+print(f"str classining xususiyatlari va metodlari {dir(str)} \n")
+print(type(int), "\n")
+print(f"int classining xususiyatlari va metodlari {dir(int)} \n")
 
-        
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print("__dict__ metodi obyketning xususiyatlarini lug'at ko'rinishida qaytaradi. \n\n")
+print(auto1.__dict__, "\n")
+print("Natijadan faqatgina kalitlarni ajratib olsak, obyektning xususiyatlari chiqadi:\n")
+print(auto1.__dict__.keys(), "\n")
