@@ -56,6 +56,12 @@ class Talaba(Shaxs):
         info = f"{self.ism} {self.familiya}. "
         info += f"{self.get_bosqich()}-bosqich. ID raqami: {self.idraqam}"
         return info
+    
+    def fanga_yozil(self, nomi):
+        self.fanlar.append(nomi)
+    
+    def get_list_of_science(self):
+        return [i.get_name() for i in self.fanlar]
 
 
 class Manzil:
@@ -85,15 +91,14 @@ class Fan:
     def __init__(self, nomi):
         self.nomi = nomi
         
-    def fanga_yozil(self):
-        return Talaba.fanlar.append(self.nomi)
-    
+    def get_name(self):
+        return self.nomi
     
 matematika = Fan("Oliy Matematika")
 fizika = Fan("fizika")
 
-        
-        
+talaba1.fanga_yozil(matematika)
+talaba1.fanga_yozil(fizika)
         
         
         
