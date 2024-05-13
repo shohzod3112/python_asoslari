@@ -165,10 +165,13 @@ class Foydalanuvchi(Shaxs):
         self.idraqam = idraqam
         self.manzil = manzil
         
-        def get_id(self):
+        def get_idraqam(self):
             """Foydalanuvchining ID raqami"""
             return self.idraqam
         
+        def get_info1(self):
+            """Foydalanuvchi haqida ma'lumot"""
+            return f"{self.ism} {self.familiya}. Manzil: {Shaxs.manzil.get_manzil()}. ID raqami: {self.idraqam}"
         
         
 user1 = Foydalanuvchi("Hasan", "Husanov", "AA1232252", 2002, 454, user1_manzil)
