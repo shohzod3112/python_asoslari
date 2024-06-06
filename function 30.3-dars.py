@@ -91,10 +91,14 @@ class Manzil:
         manzil = f"{self.viloyat} viloyati, {self.tuman} tumani, "
         manzil += f"{self.kocha} ko'chasi, {self.uy}-uy"
         return manzil
-
+    
+    def get_info(self):
+        return f"Adress: {self.viloyat} viloyati, {self.tuman} tumani, {self.kocha} ko'chasi, {self.uy}-uy"
+    
 
 talaba1_manzil = Manzil(12, "Olmazor", "Bog'bon", "Samarqand")
 professor1_manzil = Manzil(2, "Yashnobod", "iltifot", "Toshkent")
+
 magistr_manzil = Manzil(1, "Rakat", "Mirobod", "Toshkent")
 user1_manzil = Manzil(12, "Yashnar", "Mirishkor", "Qashqadaryo")
 talaba1 = Talaba("Valijon", "Aliyev", "FA112299", 2000, "0000012", talaba1_manzil)
@@ -133,7 +137,21 @@ class Professor(Shaxs):
     
     def get_info(self):
         return (f"{self.ism}, maqomlari: {self.maqomi}, himoya qilgan yili: {self.himoya_yili}")
-    
+
+class Foydalanuvchi(Shaxs):
+    def __init__(self, ism, familiya, passport, tyil, idraqam, manzil):
+        super().__init__(ism, familiya, passport, tyil)
+        
+        self.idraqam = idraqam
+        self.manzil = manzil
+        
+        def get_idraqam(self):
+            """Foydalanuvchining ID raqami"""
+            return self.idraqam
+        
+        def get_info1(self):
+            """Foydalanuvchi haqida ma'lumot"""
+            return f"{self.ism} {self.familiya}. Manzil: {Shaxs.manzil.get_manzil()}. ID raqami: {self.idraqam}"
 
 professor1 = Professor("Shoh", "Ro'ziyev", "AA1232132", 1992, professor1_manzil, "Akademik", 2002)
 
@@ -154,24 +172,19 @@ class Magistr(Talaba):
         return (f"{self.ism}, talim turi: {self.talim_turi}, shartnoma turi: {self.shartnoma_turi}")
     
 magistr1 = Magistr("Munisaxon", "Dilmurodova", "AA1232322", 2019, 11, magistr_manzil, "Sirtqi", "Byudjet")
-
-
-class Foydalanuvchi(Shaxs):
-    def __init__(self, ism, familiya, passport, tyil, idraqam, manzil):
-        """Talabaning xususiyatlari"""
-        
-        super().__init__(ism, familiya, passport, tyil)
-        
-        self.idraqam = idraqam
-        self.manzil = manzil
-        
-        def get_idraqam(self):
-            """Foydalanuvchining ID raqami"""
-            return self.idraqam
-        
-        def get_info1(self):
-            """Foydalanuvchi haqida ma'lumot"""
-            return f"{self.ism} {self.familiya}. Manzil: {Shaxs.manzil.get_manzil()}. ID raqami: {self.idraqam}"
-        
-        
+  
 user1 = Foydalanuvchi("Hasan", "Husanov", "AA1232252", 2002, 454, user1_manzil)
+
+class Admin(Foydalanuvchi):
+    def __init__(self, ism, familiya, passport, tyil, idraqam, manzil, user):
+        super().__init__(ism, familiya, passport, tyil, idraqam, manzil)
+        self.user = user
+        
+    def ban_user(self):
+        return (f"{self.ism} ismli {self.user} user bloklandi")
+     
+banuser = Admin("Asad", "Fasad", "AA343434", 2000, 55, user1_manzil, "oddiy")
+
+# banuser.get_info() kiritilganda pastdagi javob chiqyapti. get_info metodi
+# Admin clasida yoq shuni uchun ota class metodidan foydalanilyapti.
+# Out[20]: 'Asad Fasad. Passport:AA343434, 2000-yilda tug`ilgan'
